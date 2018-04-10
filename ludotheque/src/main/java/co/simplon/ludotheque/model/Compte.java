@@ -2,7 +2,7 @@ package co.simplon.ludotheque.model;
 
 public class Compte {
 	
-private long id_compte;
+private Long id_compte;
 private String nom;
 private String prenom;
 private String email;
@@ -12,7 +12,7 @@ private String pseudo;
 	public Compte() {
 		}
 
-	public Compte(long id_compte, String nom, String prenom, String email, String mdp, String pseudo) {
+	public Compte(Long id_compte, String nom, String prenom, String email, String mdp, String pseudo) {
 		super();
 		this.id_compte = id_compte;
 		this.nom = nom;
@@ -22,11 +22,11 @@ private String pseudo;
 		this.pseudo = pseudo;
 	}
 
-	public long getId_compte() {
+	public Long getId_compte() {
 		return id_compte;
 	}
 
-	public void setId_compte(long id_compte) {
+	public void setId_compte(Long id_compte) {
 		this.id_compte = id_compte;
 	}
 

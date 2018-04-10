@@ -2,7 +2,7 @@ package co.simplon.ludotheque.model;
 
 public class Jeu {
 	
-private long id_jeu;
+private Long id_jeu;
 private String titre;
 private String description;
 private String theme;
@@ -18,7 +18,7 @@ private int exemplaire_dispo;
 	public Jeu() {
 		}
 	
-	public Jeu (long id_jeu, String titre, String description, String theme, String genre1, String genre2, String genre3, int joueur_min, int joueur_max, boolean disponible, int exemplaire_catalogue, int exemplaire_dispo) {
+	public Jeu (Long id_jeu, String titre, String description, String theme, String genre1, String genre2, String genre3, int joueur_min, int joueur_max, boolean disponible, int exemplaire_catalogue, int exemplaire_dispo) {
 		this.id_jeu = id_jeu;
 		this.titre = titre;
 		this.description = description;
@@ -33,11 +33,11 @@ private int exemplaire_dispo;
 		this.exemplaire_dispo = exemplaire_dispo;
 	}
 
-	public long getId_jeu() {
+	public Long getId_jeu() {
 		return id_jeu;
 	}
 
-	public void setId_jeu(long id_jeu) {
+	public void setId_jeu(Long id_jeu) {
 		this.id_jeu = id_jeu;
 	}
 

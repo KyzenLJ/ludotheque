@@ -2,7 +2,7 @@ package co.simplon.ludotheque.model;
 
 public class Resa {
 	
-private long id_resa;
+private Long id_resa;
 private int id_jeu_reserve;
 private int id_emprunteur;
 private boolean honore;
@@ -11,7 +11,7 @@ private boolean rendu;
 	public Resa() {
 		}
 
-	public Resa(long id_resa, int id_jeu_reserve, int id_emprunteur, boolean honore, boolean rendu) {
+	public Resa(Long id_resa, int id_jeu_reserve, int id_emprunteur, boolean honore, boolean rendu) {
 		super();
 		this.id_resa = id_resa;
 		this.id_jeu_reserve = id_jeu_reserve;
@@ -20,11 +20,11 @@ private boolean rendu;
 		this.rendu = rendu;
 	}
 
-	public long getId_resa() {
+	public Long getId_resa() {
 		return id_resa;
 	}
 
-	public void setId_resa(long id_resa) {
+	public void setId_resa(Long id_resa) {
 		this.id_resa = id_resa;
 	}
 
