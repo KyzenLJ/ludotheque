@@ -9,11 +9,11 @@ public interface ResaDao {
 	// methode à utiliser dans l'implementation de JDBCResa
 	public List<Resa> listResas() throws Exception;
 	
-	public Resa getResa(Long id_resa) throws Exception;
+	public Resa get(Long id_resa) throws Exception;
 	
-	public Resa addResa(Resa resa) throws Exception;
+	public Resa add(Resa resa) throws Exception;
 	
-	public Resa updateResa(Resa resa) throws Exception;
+	public Resa update(Resa resa) throws Exception;
 	
-	public void deleteResa(Long id_resa) throws Exception;
+	public void delete(Long id_resa) throws Exception;
 }

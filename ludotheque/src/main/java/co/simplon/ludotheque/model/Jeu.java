@@ -2,13 +2,10 @@ package co.simplon.ludotheque.model;
 
 public class Jeu {
 	
-private Long id_jeu;
+private Long id;
 private String titre;
 private String description;
 private String theme;
-private String genre1;
-private String genre2;
-private String genre3;
 private int joueur_min;
 private int joueur_max;
 private boolean disponible;
@@ -18,14 +15,11 @@ private int exemplaire_dispo;
 	public Jeu() {
 		}
 	
-	public Jeu (Long id_jeu, String titre, String description, String theme, String genre1, String genre2, String genre3, int joueur_min, int joueur_max, boolean disponible, int exemplaire_catalogue, int exemplaire_dispo) {
-		this.id_jeu = id_jeu;
+	public Jeu (Long id, String titre, String description, String theme, int joueur_min, int joueur_max, boolean disponible, int exemplaire_catalogue, int exemplaire_dispo) {
+		this.id = id;
 		this.titre = titre;
 		this.description = description;
 		this.theme = theme;
-		this.genre1 = genre1;
-		this.genre2 = genre2;
-		this.genre3 = genre3;
 		this.joueur_min = joueur_min;
 		this.joueur_max = joueur_max;
 		this.disponible = disponible;
@@ -34,11 +28,11 @@ private int exemplaire_dispo;
 	}
 
 	public Long getId_jeu() {
-		return id_jeu;
+		return id;
 	}
 
-	public void setId_jeu(Long id_jeu) {
-		this.id_jeu = id_jeu;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitre() {
@@ -63,30 +57,6 @@ private int exemplaire_dispo;
 
 	public void setTheme(String theme) {
 		this.theme = theme;
-	}
-
-	public String getGenre1() {
-		return genre1;
-	}
-
-	public void setGenre1(String genre1) {
-		this.genre1 = genre1;
-	}
-
-	public String getGenre2() {
-		return genre2;
-	}
-
-	public void setGenre2(String genre2) {
-		this.genre2 = genre2;
-	}
-
-	public String getGenre3() {
-		return genre3;
-	}
-
-	public void setGenre3(String genre3) {
-		this.genre3 = genre3;
 	}
 
 	public int getJoueur_min() {

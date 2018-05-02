@@ -21,7 +21,7 @@ import co.simplon.ludotheque.model.Jeu;
 public class JdbcJeu implements JeuDao {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
-	private DataSource datasource;
+	private final DataSource datasource;
 	/**
 	 * Constructeur
 	 * 
@@ -66,13 +66,10 @@ public class JdbcJeu implements JeuDao {
 	private Jeu getJeuFromResultSet(ResultSet rs) throws SQLException {
 		Jeu jeu = new Jeu();
 		//On récupère les données par colonne
-		jeu.setId_jeu(rs.getLong("id_jeu"));
+		jeu.setId(rs.getLong("id"));
 		jeu.setTitre(rs.getString("titre"));
 		jeu.setDescription(rs.getString("description"));
 		jeu.setTheme(rs.getString("theme"));
-		jeu.setGenre1(rs.getString("genre1"));
-		jeu.setGenre2(rs.getString("genre2"));
-		jeu.setGenre3(rs.getString("genre3"));
 		jeu.setJoueur_min(rs.getInt("joueur_min"));
 		jeu.setJoueur_max(rs.getInt("joueur_max"));
 		jeu.setDisponible(rs.getBoolean("disponible"));
@@ -84,7 +81,7 @@ public class JdbcJeu implements JeuDao {
 	
 	//Méthode pour voir un jeu
 	@Override
-	public Jeu getJeu(Long id_jeu) throws Exception {
+	public Jeu get(Long id) throws Exception {
 		Jeu jeu = null;
 		String sql;
 		
@@ -96,10 +93,10 @@ public class JdbcJeu implements JeuDao {
 		try (Connection connection = this.datasource.getConnection()) {
 			try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 				// injection du paramètre ci-dessous à la place du ? de la requête
-				pstmt.setLong(1, id_jeu);
+				pstmt.setLong(1, id);
 				
 				try (ResultSet rs = pstmt.executeQuery()) {
-					pstmt.setLong(1, id_jeu);
+					pstmt.setLong(1, id);
 					// Log info
 					logSQL(pstmt);
 					// Prend en charge le résultat de la requête
@@ -118,7 +115,7 @@ public class JdbcJeu implements JeuDao {
 	
 	//Pour ajouter un jeu
 	@Override
-	public Jeu addJeu(Jeu jeu) throws Exception {
+	public Jeu add(Jeu jeu) throws Exception {
 		PreparedStatement pstmt = null;
 		Jeu result = null;
 		try {
@@ -130,9 +127,6 @@ public class JdbcJeu implements JeuDao {
 			pstmt.setString(1, jeu.getTitre());
 			pstmt.setString(2, jeu.getDescription());
 			pstmt.setString(3, jeu.getTheme());
-			pstmt.setString(4, jeu.getGenre1());
-			pstmt.setString(5, jeu.getGenre2());
-			pstmt.setString(6, jeu.getGenre3());
 			pstmt.setInt(7, jeu.getJoueur_min());
 			pstmt.setInt(8, jeu.getJoueur_max());
 			pstmt.setBoolean(9, jeu.isDisponible());
@@ -158,25 +152,25 @@ public class JdbcJeu implements JeuDao {
 	}
 
 	@Override
-	public Jeu updateJeu(Jeu jeu) throws Exception {
+	public Jeu update(Jeu jeu) throws Exception {
 		
 		return null;
 	}
 
 	// Méthode pour effacer un jeu
 	@Override
-	public void deleteJeu(Long id_jeu) throws Exception {
+	public void delete(Long id) throws Exception {
 		String sql;
 		sql = "DELETE FROM jeu WHERE id_jeu = ?";
 		
 		try (Connection connection = this.datasource.getConnection()) {
 			
 			try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-			pstmt.setLong(1, id_jeu);
+			pstmt.setLong(1, id);
 			
 			try {
 				int rs = pstmt.executeUpdate();
-				pstmt.setLong(1, id_jeu);
+				pstmt.setLong(1, id);
 				
 				//Log info
 				logSQL(pstmt);

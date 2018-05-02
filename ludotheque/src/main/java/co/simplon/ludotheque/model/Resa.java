@@ -1,47 +1,53 @@
 package co.simplon.ludotheque.model;
 
+import java.util.Date;
+
 public class Resa {
 	
-private Long id_resa;
-private int id_jeu_reserve;
-private int id_emprunteur;
+private Long id;
+private Long id_jeu;
+private Long id_compte;
 private boolean honore;
 private boolean rendu;
+private Date debutResa;
+private Date retourResaPrevu;
 
 	public Resa() {
 		}
 
-	public Resa(Long id_resa, int id_jeu_reserve, int id_emprunteur, boolean honore, boolean rendu) {
+	public Resa(Long id, Long id_jeu, Long id_compte, boolean honore, boolean rendu, Date debutResa, Date retourResaPrevu) {
 		super();
-		this.id_resa = id_resa;
-		this.id_jeu_reserve = id_jeu_reserve;
-		this.id_emprunteur = id_emprunteur;
+		this.id = id;
+		this.id_jeu = id_jeu;
+		this.id_compte = id_compte;
 		this.honore = honore;
 		this.rendu = rendu;
+		this.debutResa = debutResa;
+		this.retourResaPrevu = retourResaPrevu;
 	}
 
-	public Long getId_resa() {
-		return id_resa;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId_resa(Long id_resa) {
-		this.id_resa = id_resa;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getId_jeu_reserve() {
-		return id_jeu_reserve;
+	public Long getId_jeu() {
+		return id_jeu;
 	}
 
-	public void setId_jeu_reserve(int id_jeu_reserve) {
-		this.id_jeu_reserve = id_jeu_reserve;
+	public void setId_jeu(Long id_jeu) {
+		this.id_jeu = id_jeu;
 	}
 
-	public int getId_emprunteur() {
-		return id_emprunteur;
+	public Long getId_compte() {
+		return id_compte;
 	}
 
-	public void setId_emprunteur(int id_emprunteur) {
-		this.id_emprunteur = id_emprunteur;
+	public void setId_compte(Long id_compte) {
+		this.id_compte = id_compte;
 	}
 
 	public boolean isHonore() {
@@ -60,4 +66,19 @@ private boolean rendu;
 		this.rendu = rendu;
 	}
 	
+	public Date getDebutResa() {
+		return debutResa;
+	}
+	
+	public void setDebutResa(Date debutResa) {
+		this.debutResa = debutResa;
+	}
+	
+	public Date getRetourResaPrevu() {
+		return retourResaPrevu;
+	}
+	
+	public void setRetourResaPrevu(Date retourResaPrevu) {
+		this.retourResaPrevu = retourResaPrevu;
+	}
 }
