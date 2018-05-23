@@ -1,13 +1,34 @@
 package co.simplon.ludotheque.model;
 
-public class Compte {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name="compte")
+public class Compte extends AuditModel {
 	
-private Long id;
-private String nom;
-private String prenom;
-private String email;
-private String mdp;
-private String pseudo;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Column(nullable = false)
+	@Size(max=50)
+	private String nom;
+	@Column(nullable = false)	
+	@Size(max=50)
+	private String prenom;
+	@Column(unique = true, nullable = false)
+	@Size(max=100)
+	private String email;
+	@Column(nullable = false)
+	@Size(max=20)
+	private String mdp;
+	@Column(unique = true, nullable = false)
+	@Size(max=20)
+	private String pseudo;
 
 	public Compte() {
 		}

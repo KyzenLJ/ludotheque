@@ -2,24 +2,29 @@ package co.simplon.ludotheque.model;
 
 import java.util.Date;
 
-public class Resa {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reservation")
+public class Resa extends AuditModel  {
 	
-private Long id;
-private Long id_jeu;
-private Long id_compte;
-private boolean honore;
-private boolean rendu;
-private Date debutResa;
-private Date retourResaPrevu;
+	@Id
+	@GeneratedValue
+	private Long id;
+	private boolean honore;
+	private boolean rendu;
+	private Date debutResa;
+	private Date retourResaPrevu;
 
 	public Resa() {
 		}
 
-	public Resa(Long id, Long id_jeu, Long id_compte, boolean honore, boolean rendu, Date debutResa, Date retourResaPrevu) {
+	public Resa(Long id, boolean honore, boolean rendu, Date debutResa, Date retourResaPrevu) {
 		super();
 		this.id = id;
-		this.id_jeu = id_jeu;
-		this.id_compte = id_compte;
 		this.honore = honore;
 		this.rendu = rendu;
 		this.debutResa = debutResa;
@@ -32,22 +37,6 @@ private Date retourResaPrevu;
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getId_jeu() {
-		return id_jeu;
-	}
-
-	public void setId_jeu(Long id_jeu) {
-		this.id_jeu = id_jeu;
-	}
-
-	public Long getId_compte() {
-		return id_compte;
-	}
-
-	public void setId_compte(Long id_compte) {
-		this.id_compte = id_compte;
 	}
 
 	public boolean isHonore() {

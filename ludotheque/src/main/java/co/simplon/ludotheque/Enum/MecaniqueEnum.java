@@ -1,6 +1,6 @@
-package co.simplon.ludotheque.model.mecanique;
+package co.simplon.ludotheque.Enum;
 
-public enum Mecanique {
+public enum MecaniqueEnum {
 	COOPERATIF,
 	POSE_D_OUVRIERS,
 	POSE_DE_TUILES,
