@@ -1,0 +1,72 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout :: ludo-head" />
+<meta charset="utf-8">
+<title>Catalogue</title>
+
+<body>
+
+	<header th:include="layout::ludo-header" />
+
+	<h1>Ajouter un jeu au catalogue</h1>
+
+	<form action="#" th:action="@{/gestionCatalogue}" th:object="${jeu}"
+		method="post">
+		<table>
+			<tr>
+				<td>Titre :</td>
+				<td><input id="titreJeu" type="text" th:field="*{titre}" /></td>
+			</tr>
+			<tr>
+				<td>Description :</td>
+				<td><input type="text" th:field="*{description}" /></td>
+			</tr>
+			<tr>
+				<td>Theme :</td>
+				<td><input type="text" th:field="*{theme}" /></td>
+			</tr>
+			<tr>
+				<td>Nombre de joueur min :</td>
+				<td><input type="number" th:field="*{joueurMin}" /></td>
+			</tr>
+			<tr>
+				<td>Nombre de joueur max :</td>
+				<td><input type="number" th:field="*{joueurMax}" /></td>
+			</tr>
+			<tr>
+				<td>Nombre d'exemplaires catalogue :</td>
+				<td><input type="number" th:field="*{exemplaireCatalogue}" /></td>
+			</tr>
+			<tr>
+				<td>Nombre d'exemplaires disponibles :</td>
+				<td><input type="number" th:field="*{exemplaireDispo}" /></td>
+			</tr>
+			<tr>
+				<td>Mécanique :</td>
+				<td><select size="3" name="mecanique" multiple="multiple">
+						<option th:each="mecaniqueEnum : ${mecaniquesEnum}"
+							th:value="${mecaniqueEnum}" th:text="${mecaniqueEnum.text}"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /> <input type="reset"
+					value="Reset" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		var message = /*[[${message}]]*/'default';
+		console.log(message);
+
+		/*]]>*/
+	</script>
+
+	<footer th:include="layout::ludo-footer" />
+
+</body>
+
+</html>

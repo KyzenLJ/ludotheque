@@ -91,6 +91,10 @@ public class Compte extends AuditModel {
 		this.pseudo = pseudo;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", mdp=" + mdp
+				+ ", pseudo=" + pseudo + "]";
+	}
 
 }

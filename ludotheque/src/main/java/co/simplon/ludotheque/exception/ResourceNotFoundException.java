@@ -1,4 +1,4 @@
-package exception;
+package co.simplon.ludotheque.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

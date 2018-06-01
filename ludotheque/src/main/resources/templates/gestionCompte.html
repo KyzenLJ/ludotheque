@@ -1,0 +1,50 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout :: ludo-head"/>
+    <meta charset="utf-8">
+	<title>Gestion Comptes</title>
+
+<body>
+
+	<header th:include="layout::ludo-header" />
+	
+		<h1>Liste des utilisateurs</h1>
+		
+		      <div>
+         <table border="1">
+            <tr>
+               <th>Nom</th>
+               <th>Prénom</th>
+               <th>Pseudo</th>
+               <th>Email</th>
+               <th>Mot de passe</th>
+            </tr>
+            <tr th:each ="compte : ${comptesFirstPage}">
+               <td th:utext="${compte.nom}">...</td>
+               <td th:utext="${compte.prenom}">...</td>
+               <td th:utext="${compte.pseudo}">...</td>
+               <td th:utext="${compte.email}">...</td>
+               <td th:upassword="${compte.mdp}">...</td>
+            </tr>
+         </table>
+      </div>
+      
+      <div>
+      	<h2>Créer un nouvel utilisateur :</h2>
+      </div>
+      
+     <form action="#" th:action="@{/gestionCompte}" th:object="${compte}" method="post">
+		<p>Nom : <input type="text" th:field="*{nom}"/></p>
+		<p>Prénom : <input type="text" th:field="*{prenom}"/></p>
+		<p>Pseudo : <input type="text" th:field="*{pseudo}"/></p>
+		<p>Email : <input type="text" th:field="*{email}"/></p>
+		<p>Mot de passe : <input type="password" th:field="*{mdp}"/></p>
+		<p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+	</form>
+	
+	<footer th:include="layout::ludo-footer"/>
+
+</body>
+
+</html>

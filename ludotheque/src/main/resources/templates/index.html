@@ -1,66 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://WWW.thymleaf.org">
-<head>
-	<!-- Import Google Icon Font -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	
-	<!-- Let browser know website is optimized for mobile -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout::ludo-head"/>	
 	<title>Accueil</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+
 <body>
-	<header>
-		<div class="ccontent-center">
-			<div class="row logo-box">
-				<a href="#">
-					<img src="logo de la ludo" alt="logo de la ludotheque"/>
-				</a>
-				<p class="app-title">Bienvenue à la ludothèque</p>
-				<div class="header-link">
-					<a class="connexion" href="#">Se connecter</a>
-				</div>
-			</div>
-		</div>
-	</header>
-	
-	<div class="dashboard-side-menu">
-		<div class="flex-side-menu">
-		
-			<ul>
-				<li>
-					<a href="/index.html" title="accueil">Accueil</a>
-				</li>
-				<li>
-					<a href="/profil.html" title="voir profil" class="profil">Profil</a>
-				</li>
-				<li>
-					<a href="/catalogue.html" title="consulter catalogue" class="catalogue">Catalogue</a>
-				</li>
-				<li>
-					<a href="/gestionCatalogue.html" title="gerer catalogue" class="gestionCatalogue">Gestion du catalogue</a>
-				</li>
-				<li>
-					<a href="/aide.html" title="besoin d'aide" class="aide">Contact / F.A.Q</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-	
-<p>En construction</p>
+	<header th:include="layout::ludo-header"/>
 
-	<footer>
 	
-	</footer>
+	<h1>Quoi de neuf ?</h1>
+	
+	<main id="articles">
+	<article th:each ="article : ${articlesFirstPage}">
+		<h2 th:utext="${article.titre}">...</h2>
+		<p class="content" th:utext="${article.texte}">...</p>
+		<div class="date">
+			<i>Post� le</i>
+			<span th:text="${#dates.format(article.date, 'dd-MMM-yyyy')}">...</span>
+		</div>
+	</article>
+	</main>
+	
+	<footer th:include="layout::ludo-footer"/>
 
-<!-- JavaScript at end of body for optimized loading -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>

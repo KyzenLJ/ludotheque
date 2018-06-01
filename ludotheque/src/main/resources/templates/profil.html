@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::ludo-head"/>	
+	<title>Profil</title>
+</head>
+<body>
+	<header th:replace="layout::ludo-header"/>
+
+	<div class="row small-row">
+		<div class="input-field required">
+			<label for="form-name">Nom</label>
+			<input type="text" th:field="*{nom}" name="nom" pattern="[A-Za-z\u00C0-\u00FF'\-\s]+" class="form-control validate-firstname form-control" maxlenght="38"
+					required="required" id="form-name" aria-requiered="true" />
+		</div>
+		<div class="input-field required">
+			<label for="form-firstname">Prénom</label>
+			<input type="text" th:field="*{prenom}" name="prenom" pattern="[A-Za-z\u00C0-\u00FF'\-\s]+" class="form-control validate-firstname form-control" maxlenght="38"
+					required="required" id="form-firstname" aria-requiered="true" />
+		</div>
+		<div class="input-field required">
+			<label for="form-pseudo">Pseudo</label>
+			<input type="text" th:field="*{pseudo}" name="pseudo" pattern="[A-Za-z\u00C0-\u00FF'\-\s]+" class="form-control validate-firstname form-control" maxlenght="38"
+					required="required" id="form-pseudo" aria-requiered="true" />
+		</div>
+	</div>
+
+	
+	<footer th:replace="layout::ludo-footer"/>
+
+</body>
+
+</html>

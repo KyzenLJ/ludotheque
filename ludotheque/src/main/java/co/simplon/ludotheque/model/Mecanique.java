@@ -20,6 +20,7 @@ import co.simplon.ludotheque.Enum.MecaniqueEnum;
 @Entity
 @Table(name="mecanique")
 public class Mecanique extends AuditModel {
+
 	@Id
 	@GeneratedValue
 	private Long id;
