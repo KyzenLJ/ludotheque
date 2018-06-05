@@ -2,6 +2,7 @@ package co.simplon.ludotheque.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class Article {
 	@NotBlank
 	private String titre;
 	@NotBlank
-	@Size(max=2000)
+	@Column(length=10000)
 	private String texte;
 	private Date date = new Date();
 	

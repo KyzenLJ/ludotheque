@@ -27,20 +27,20 @@ public class Mecanique extends AuditModel {
 	@NaturalId
 	private MecaniqueEnum typeMecanique;
 	
-	@ManyToMany(mappedBy = "mecanique")
+//	@ManyToMany(mappedBy = "mecanique")
 //	@OneToMany(cascade = CascadeType.ALL,
 //	   fetch = FetchType.LAZY,
 //	   mappedBy = "mecanique")
-	private Set<Jeu> jeu = new HashSet<>();
+//	private Set<Jeu> jeu = new HashSet<>();
 	
 	public Mecanique() {
 	}
 
-	public Mecanique(Long id, MecaniqueEnum typeMecanique, Set<Jeu> jeu) {
+	public Mecanique(Long id, MecaniqueEnum typeMecanique) {
 		super();
 		this.id = id;
 		this.typeMecanique = typeMecanique;
-		this.jeu = jeu;
+	//	this.jeu = jeu;
 	}
 
 	public Long getId() {
@@ -59,13 +59,13 @@ public class Mecanique extends AuditModel {
 		this.typeMecanique = typeMecanique;
 	}
 
-	public Set<Jeu> getJeu() {
-		return jeu;
-	}
-
-	public void setJeu(Set<Jeu> jeu) {
-		this.jeu = jeu;
-	}
+//	public Set<Jeu> getJeu() {
+//		return jeu;
+//	}
+//
+//	public void setJeu(Set<Jeu> jeu) {
+//		this.jeu = jeu;
+//	}
 	
     @Override
     public boolean equals(Object o) {

@@ -1,42 +1,44 @@
 <! DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="layout :: ludo-head"/>
-    <meta charset="utf-8">
-	<title>Catalogue</title>
+<head th:include="layout :: ludo-head" />
+<meta charset="utf-8">
+<title>Catalogue</title>
 
 <body>
 
 	<header th:include="layout::ludo-header" />
-	
-		<h1>Liste de jeux</h1>
-		
-		      <div>
-         <table border="1">
-            <tr>
-               <th>Titre</th>
-               <th>Description</th>
-               <th>Thème</th>
-               <th>Nombre de joueur min</th>
-               <th>Nombre de joueur max</th>
-               <th>Exemplaire catalogue</th>
-               <th>Exemplaire disponible</th>
-               <th>Mécanique</th>
-            </tr>
-            <tr th:each ="jeu : ${jeuxFirstPage}">
-               <td th:utext="${jeu.titre}">...</td>
-               <td th:utext="${jeu.description}">...</td>
-               <td th:utext="${jeu.theme}">...</td>
-               <td th:utext="${jeu.joueurMin}">...</td>
-               <td th:utext="${jeu.joueurMax}">...</td>
-               <td th:utext="${jeu.exemplaireCatalogue}">...</td>
-               <td th:utext="${jeu.exemplaireDispo}">...</td>
-               <td th:utext="${jeu.mecanique}">...</td>
-            </tr>
-         </table>
-      </div>
-	
-	<footer th:include="layout::ludo-footer"/>
+
+	<h1>Liste de jeux</h1>
+
+	<div>
+		<table border="1">
+			<tr>
+				<th>Titre</th>
+				<th>Description</th>
+				<th>Thème</th>
+				<th>Nombre de joueur min</th>
+				<th>Nombre de joueur max</th>
+				<th>Exemplaire catalogue</th>
+				<th>Exemplaire disponible</th>
+			</tr>
+			<tr th:each="jeu : ${jeuxFirstPage}">
+				<td th:utext="${jeu.titre}">...</td>
+				<td th:utext="${jeu.description}">...</td>
+				<td th:utext="${jeu.theme}">...</td>
+				<td th:utext="${jeu.joueurMin}">...</td>
+				<td th:utext="${jeu.joueurMax}">...</td>
+				<td th:utext="${jeu.exemplaireCatalogue}">...</td>
+				<td th:utext="${jeu.exemplaireDispo}">...</td>
+				<td>
+				<a th:href="@{/gestionCatalogue/modif/__${jeu.id}__}">Modifier</a>
+				<a th:href="@{/supprimeJeu/__${jeu.id}__}">Supprimer</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<footer th:include="layout::ludo-footer" />
 
 </body>
 

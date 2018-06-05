@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,36 +24,37 @@ public class Jeu extends AuditModel {
 	private Long id;
 	
 	@Column(unique = true, nullable = false)
+	@NotBlank
 	private String titre;
 	@Size(max=500)
 	private String description;
 	@Size(max=100)
 	private String theme;
 	@Column(name="joueur_min")
-	private int joueurMin;
+	private Integer joueurMin;
 	@Column(name="joueur_max")
-	private int joueurMax;
+	private Integer joueurMax;
 	@Column( name="exemplaire_catalogue", nullable=false)
-	private int exemplaireCatalogue;
+	private Integer exemplaireCatalogue;
 	@Column( name="exemplaire_dispo", nullable=false)
-	private int exemplaireDispo;
+	private Integer exemplaireDispo;
 	
-    @ManyToMany(cascade = { 
-            CascadeType.PERSIST, 
-            CascadeType.MERGE
-        })
-        @JoinTable(name = "jeu_mecanique",
-            joinColumns = @JoinColumn(name = "jeu_id"),
-            inverseJoinColumns = @JoinColumn(name = "mecanique_id")
-        )
-    private Set<Mecanique> mecanique = new HashSet<>();
+//    @ManyToMany(cascade = { 
+//            CascadeType.PERSIST, 
+//            CascadeType.MERGE
+//        })
+//        @JoinTable(name = "jeu_mecanique",
+//            joinColumns = @JoinColumn(name = "jeu_id"),
+//            inverseJoinColumns = @JoinColumn(name = "mecanique_id")
+//        )
+ //   private Set<Mecanique> mecanique = new HashSet<>();
     
     
 	public Jeu() {
 		}
 	
-	public Jeu(Long id, String titre, String description, String theme, int joueurMin, int joueurMax,
-			 int exemplaireCatalogue, int exemplaireDispo, Set<Mecanique> mecanique) {
+	public Jeu(Long id, String titre, String description, String theme, Integer joueurMin, Integer joueurMax,
+			Integer exemplaireCatalogue, Integer exemplaireDispo) {
 		super();
 		this.id = id;
 		this.titre = titre;
@@ -62,7 +64,7 @@ public class Jeu extends AuditModel {
 		this.joueurMax = joueurMax;
 		this.exemplaireCatalogue = exemplaireCatalogue;
 		this.exemplaireDispo = exemplaireDispo;
-		this.mecanique = mecanique;
+//		this.mecanique = mecanique;
 	}
 	
 	public Long getId() {
@@ -97,55 +99,51 @@ public class Jeu extends AuditModel {
 		this.theme = theme;
 	}
 
-	public int getJoueurMin() {
+	public Integer getJoueurMin() {
 		return joueurMin;
 	}
 
-	public void setJoueurMin(int joueurMin) {
+	public void setJoueurMin(Integer joueurMin) {
 		this.joueurMin = joueurMin;
 	}
 
-	public int getJoueurMax() {
+	public Integer getJoueurMax() {
 		return joueurMax;
 	}
 
-	public void setJoueurMax(int joueurMax) {
+	public void setJoueurMax(Integer joueurMax) {
 		this.joueurMax = joueurMax;
 	}
 
-	public int getExemplaireCatalogue() {
+	public Integer getExemplaireCatalogue() {
 		return exemplaireCatalogue;
 	}
 
-	public void setExemplaireCatalogue(int exemplaireCatalogue) {
+	public void setExemplaireCatalogue(Integer exemplaireCatalogue) {
 		this.exemplaireCatalogue = exemplaireCatalogue;
 	}
 
-	public int getExemplaireDispo() {
+	public Integer getExemplaireDispo() {
 		return exemplaireDispo;
 	}
 
-	public void setExemplaireDispo(int exemplaireDispo) {
+	public void setExemplaireDispo(Integer exemplaireDispo) {
 		this.exemplaireDispo = exemplaireDispo;
 	}
 
-	public Set<Mecanique> getMecanique() {
-		return mecanique;
-	}
-
-	public void setMecanique(Set<Mecanique> mecanique) {
-		this.mecanique = mecanique;
-	}
-	
-    public void addMecanique(Mecanique mecanique) {
-        ((Set<Mecanique>) mecanique).add(mecanique);
-        mecanique.getJeu().add(this);
-    }
- 
-    public void removeMecanique(Mecanique mecanique) {
-        ((Set<Mecanique>) mecanique).remove(mecanique);
-        mecanique.getJeu().remove(this);
-    }
+//	public void setMecanique(Set<Mecanique> mecanique) {
+//		this.mecanique = mecanique;
+//	}
+//	
+//    public void addMecanique(Mecanique mecanique) {
+//        ((Set<Mecanique>) mecanique).add(mecanique);
+//        mecanique.getJeu().add(this);
+//    }
+// 
+//    public void removeMecanique(Mecanique mecanique) {
+//        ((Set<Mecanique>) mecanique).remove(mecanique);
+//        mecanique.getJeu().remove(this);
+//    }
  
     @Override
     public boolean equals(Object o) {

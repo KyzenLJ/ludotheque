@@ -11,9 +11,13 @@
 
 	<h1>Ajouter un jeu au catalogue</h1>
 
-	<form action="#" th:action="@{/gestionCatalogue}" th:object="${jeu}"
-		method="post">
+	<form id="creaJeuForm" action="#" th:action="@{/gestionCatalogue}"
+		th:object="${jeu}" method="post">
 		<table>
+			<tr>
+				<td>Id :</td>
+				<td><input id="idJeu" type="number" th:field="*{id}" /></td>
+			</tr>
 			<tr>
 				<td>Titre :</td>
 				<td><input id="titreJeu" type="text" th:field="*{titre}" /></td>
@@ -42,13 +46,7 @@
 				<td>Nombre d'exemplaires disponibles :</td>
 				<td><input type="number" th:field="*{exemplaireDispo}" /></td>
 			</tr>
-			<tr>
-				<td>Mécanique :</td>
-				<td><select size="3" name="mecanique" multiple="multiple">
-						<option th:each="mecaniqueEnum : ${mecaniquesEnum}"
-							th:value="${mecaniqueEnum}" th:text="${mecaniqueEnum.text}"></option>
-				</select></td>
-			</tr>
+
 			<tr>
 				<td><input type="submit" value="Submit" /> <input type="reset"
 					value="Reset" /></td>
@@ -56,16 +54,83 @@
 		</table>
 	</form>
 
+	<footer th:include="layout::ludo-footer" />
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+		$(document)
+				.ready(
+						function() {
 
-		var message = /*[[${message}]]*/'default';
-		console.log(message);
+							// SOUMETTRE LE FORMULAIRE
+							$("#creaJeuForm").submit(function(event) {
+								// Empêche le formulaire d'être lancé directement par le browser.
+								event.preventDefault();
+								ajaxPost();
+							});
 
-		/*]]>*/
+							function ajaxPost() {
+
+								// DEFINI LES INFOS DU FORMULAIRE
+								var formData = {
+									id : $("#id").val(),
+									titre : $("#titre").val(),
+									description : $("#description").val(),
+									theme : $("#theme").val(),
+									joueurMin : $("#joueurMin").val(),
+									joueurMax : $("#joueurMax").val(),
+									exemplaireCatalogue : $(
+											"#exemplaireCatalogue").val(),
+									exemplaireDispo : $("#exemplaireDispo")
+											.val()
+								}
+
+								// DO POST
+								$
+										.ajax({
+											type : "POST",
+											contentType : "application/json",
+											url : window.location
+													+ "/gestionCatalogue",
+											data : JSON.stringify(formData),
+											dataType : 'json',
+											success : function(result) {
+												if (result.status == "Done") {
+													$("#postResultDiv")
+															.html(
+																	"<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>"
+																			+ "---> Le jeu "
+																			+ result.data.titre
+																			+ " à été ajouté avec succès "
+																			+ "</p>");
+												} else {
+													$("#postResultDiv")
+															.html(
+																	"<strong>Error</strong>");
+												}
+												console.log(result);
+											},
+											error : function(e) {
+												alert("Error!")
+												console.log("ERROR: ", e);
+											}
+										});
+
+								resetData();
+							}
+
+							function resetData() {
+								$("#id").val("");
+								$("#titre").val("");
+								$("#description").val("");
+								$("#theme").val("");
+								$("#joueurMin").val("");
+								$("#joueurMax").val("");
+								$("#exemplaireCatalogue").val("");
+								$("#exemplaireDispo").val("");
+							}
+						})}
+/*]]>*/
 	</script>
-
-	<footer th:include="layout::ludo-footer" />
 
 </body>
 

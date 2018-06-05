@@ -3,6 +3,8 @@ package co.simplon.ludotheque.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import co.simplon.ludotheque.model.Jeu;
@@ -20,11 +22,12 @@ public class JeuServiceJpaImpl implements JeuService {
 	public List<Jeu> findAll() {
 		return this.jeuRepo.findAll();
 	}
+	
+	@Override
+	public Page<Jeu> jeuList(Pageable pageable) {
+		return jeuRepo.findAll(pageable);
+	}
 
-//	@Override
-//	public Jeu findById(Long id) {
-//		return this.jeuRepo.findById(id);
-//	}
 	@Override
 	public Jeu findById(Long id) {
 		// TODO Auto-generated method stub
