@@ -11,12 +11,11 @@
 
 	<h1>Ajouter un jeu au catalogue</h1>
 
-	<form id="creaJeuForm" action="#" th:action="@{/gestionCatalogue}"
+	<form id="modifJeuForm" action="#" th:action="@{/gestionCatalogue}"
 		th:object="${jeu}" method="post">
 		<table>
 			<tr>
-				<td>Id :</td>
-				<td><input id="idJeu" type="number" th:field="*{id}" /></td>
+				<td><input id="idJeu" type="hidden" th:field="*{id}" /></td>
 			</tr>
 			<tr>
 				<td>Titre :</td>
@@ -48,8 +47,8 @@
 			</tr>
 
 			<tr>
-				<td><input type="submit" value="Submit" /> <input type="reset"
-					value="Reset" /></td>
+				<td><input type="submit" value="Valider" /> <input type="reset"
+					value="Effacer" /></td>
 			</tr>
 		</table>
 	</form>
@@ -62,7 +61,7 @@
 						function() {
 
 							// SOUMETTRE LE FORMULAIRE
-							$("#creaJeuForm").submit(function(event) {
+							$("#modifJeuForm").submit(function(event) {
 								// Empêche le formulaire d'être lancé directement par le browser.
 								event.preventDefault();
 								ajaxPost();

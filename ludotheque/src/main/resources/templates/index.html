@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout::ludo-head"/>	
+<meta charset="utf-8">
 	<title>Accueil</title>
 
 <body>
@@ -14,7 +15,7 @@
 		<h2 th:utext="${article.titre}">...</h2>
 		<p class="content" th:utext="${article.texte}">...</p>
 		<div class="date">
-			<i>Posté le</i>
+			<i>PostÃ© le</i>
 			<span th:text="${#dates.format(article.date, 'dd-MMM-yyyy')}">...</span>
 		</div>
 	</article>

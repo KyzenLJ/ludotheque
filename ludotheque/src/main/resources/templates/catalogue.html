@@ -12,16 +12,19 @@
 	<h1>Liste de jeux</h1>
 
 	<div>
-		<table border="1">
+		<table class="table table-bordered">
+		<thead>
 			<tr>
-				<th>Titre</th>
-				<th>Description</th>
-				<th>Thème</th>
-				<th>Nombre de joueur min</th>
-				<th>Nombre de joueur max</th>
-				<th>Exemplaire catalogue</th>
-				<th>Exemplaire disponible</th>
+				<th scope="col">Titre</th>
+				<th scope="col">Description</th>
+				<th scope="col">Thème</th>
+				<th scope="col">Nombre de joueur min</th>
+				<th scope="col">Nombre de joueur max</th>
+				<th scope="col">Exemplaire catalogue</th>
+				<th scope="col">Exemplaire disponible</th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr th:each="jeu : ${jeuxFirstPage}">
 				<td th:utext="${jeu.titre}">...</td>
 				<td th:utext="${jeu.description}">...</td>
@@ -35,6 +38,7 @@
 				<a th:href="@{/supprimeJeu/__${jeu.id}__}">Supprimer</a>
 				</td>
 			</tr>
+		</tbody>
 		</table>
 	</div>
 

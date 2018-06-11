@@ -1,13 +1,10 @@
 package co.simplon.ludotheque.service;
 
-import java.util.List;
-import co.simplon.ludotheque.model.Article;
+import org.springframework.stereotype.Service;
 
-public interface ArticleService {
+import co.simplon.ludotheque.repository.ArticleRepository;
 
-	List<Article> findAll();
-	Article findById(Long id);
-	Article create(Article article);
-	Article edit(Article article);
-	void deleteById(Long id);
+@Service
+public interface ArticleService extends ArticleRepository {
+
 }
