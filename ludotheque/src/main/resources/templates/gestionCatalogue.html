@@ -3,13 +3,14 @@
 
 <head th:include="layout :: ludo-head" />
 <meta charset="utf-8">
-<title>Catalogue</title>
+<title>Gestion catalogue</title>
 
 <body>
 
 	<header th:include="layout::ludo-header" />
 
 	<h1>Ajouter un jeu au catalogue</h1>
+	<p> Les champs suivis d'une * sont obligatoire. </p>
 
 	<form id="modifJeuForm" action="#" th:action="@{/gestionCatalogue}"
 		th:object="${jeu}" method="post">
@@ -18,8 +19,8 @@
 				<td><input id="idJeu" type="hidden" th:field="*{id}" /></td>
 			</tr>
 			<tr>
-				<td>Titre :</td>
-				<td><input id="titreJeu" type="text" th:field="*{titre}" /></td>
+				<td>Titre : *</td>
+				<td><input id="titreJeu" type="text" onchange="this.value = this.value.toUpperCase();" th:field="*{titre}" required/></td>
 			</tr>
 			<tr>
 				<td>Description :</td>
@@ -30,31 +31,31 @@
 				<td><input type="text" th:field="*{theme}" /></td>
 			</tr>
 			<tr>
-				<td>Nombre de joueur min :</td>
-				<td><input type="number" th:field="*{joueurMin}" /></td>
+				<td>Nombre de joueur min : *</td>
+				<td><input type="number" min="1" th:field="*{joueurMin}" required/></td>
 			</tr>
 			<tr>
-				<td>Nombre de joueur max :</td>
-				<td><input type="number" th:field="*{joueurMax}" /></td>
+				<td>Nombre de joueur max : *</td>
+				<td><input type="number" min="1" th:field="*{joueurMax}" required/></td>
 			</tr>
 			<tr>
-				<td>Nombre d'exemplaires catalogue :</td>
-				<td><input type="number" th:field="*{exemplaireCatalogue}" /></td>
+				<td>Nombre d'exemplaires catalogue : *</td>
+				<td><input type="number" min="1" th:field="*{exemplaireCatalogue}" required /></td>
 			</tr>
 			<tr>
-				<td>Nombre d'exemplaires disponibles :</td>
-				<td><input type="number" th:field="*{exemplaireDispo}" /></td>
+				<td>Nombre d'exemplaires disponibles : *</td>
+				<td><input type="number" min="0" th:field="*{exemplaireDispo}" /></td>
 			</tr>
 
 			<tr>
-				<td><input type="submit" value="Valider" /> <input type="reset"
+				<td><input type="submit" value="Valider" required/> <input type="reset"
 					value="Effacer" /></td>
 			</tr>
 		</table>
 	</form>
 
 	<footer th:include="layout::ludo-footer" />
-	<script th:inline="javascript">
+	<!-- <script th:inline="javascript">
 		/*<![CDATA[*/
 		$(document)
 				.ready(
@@ -97,7 +98,7 @@
 													$("#postResultDiv")
 															.html(
 																	"<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>"
-																			+ "---> Le jeu "
+																			+ "---> <!-- Le jeu "
 																			+ result.data.titre
 																			+ " à été ajouté avec succès "
 																			+ "</p>");
@@ -129,7 +130,7 @@
 							}
 						})}
 /*]]>*/
-	</script>
+	</script>  -->
 
 </body>
 

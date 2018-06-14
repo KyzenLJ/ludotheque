@@ -23,13 +23,13 @@ public class Jeu extends AuditModel {
 	private String description;
 	@Size(max=100)
 	private String theme;
-	@Column(name="joueur_min")
+	@Column(name="joueur_min",  nullable=false)
 	private Integer joueurMin;
-	@Column(name="joueur_max")
+	@Column(name="joueur_max",  nullable=false)
 	private Integer joueurMax;
 	@Column( name="exemplaire_catalogue", nullable=false)
 	private Integer exemplaireCatalogue;
-	@Column( name="exemplaire_dispo", nullable=false)
+	@Column( name="exemplaire_dispo")
 	private Integer exemplaireDispo;
 	
 //    @ManyToMany(cascade = { 

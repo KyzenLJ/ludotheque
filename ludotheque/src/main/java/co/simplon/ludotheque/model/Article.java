@@ -28,7 +28,7 @@ public class Article {
 		
 	}
 	
-	public Article(Long id, @NotBlank String titre, @NotBlank @Size(max = 2000) String texte, Date date) {
+	public Article(Long id, @NotBlank String titre, @NotBlank @Size(max = 10000) String texte, Date date) {
 		super();
 		this.id = id;
 		this.titre = titre;

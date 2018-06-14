@@ -38,7 +38,6 @@ public class JeuController {
 
     @RequestMapping(value="/gestionCatalogue", method = RequestMethod.POST)
     public String modifJeu(Model model, Jeu jeu) {
-    	System.out.println("quoi dans jeu " + jeu.getId());
     	jeuService.save(jeu);
         model.addAttribute("catalogue", jeuService.findAll());
         return "redirect:/catalogue";

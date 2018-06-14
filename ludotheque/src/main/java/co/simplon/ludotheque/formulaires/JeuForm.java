@@ -8,10 +8,9 @@ public class JeuForm {
 	private String theme;
 	private int joueur_min;
 	private int joueur_max;
-	private boolean disponible;
 	private int exemplaire_catalogue;
 	private int exemplaire_dispo;
-	private String mecanique;
+	//private String mecanique;
 	
 	public String getTitre() {
 		return titre;
@@ -43,12 +42,7 @@ public class JeuForm {
 	public void setJoueur_max(int joueur_max) {
 		this.joueur_max = joueur_max;
 	}
-	public boolean isDisponible() {
-		return disponible;
-	}
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
+
 	public int getExemplaire_catalogue() {
 		return exemplaire_catalogue;
 	}
@@ -61,18 +55,18 @@ public class JeuForm {
 	public void setExemplaire_dispo(int exemplaire_dispo) {
 		this.exemplaire_dispo = exemplaire_dispo;
 	}
-	public String getMecanique() {
-		return mecanique;
-	}
-	public void setMecanique(String mecanique) {
-		this.mecanique = mecanique;
-	}
+//	public String getMecanique() {
+//		return mecanique;
+//	}
+//	public void setMecanique(String mecanique) {
+//		this.mecanique = mecanique;
+//	}
 	
 	@Override
 	public String toString() {
 		return "JeuForm [titre=" + titre + ", description=" + description + ", theme=" + theme + ", joueur_min="
-				+ joueur_min + ", joueur_max=" + joueur_max + ", disponible=" + disponible + ", exemplaire_catalogue="
-				+ exemplaire_catalogue + ", exemplaire_dispo=" + exemplaire_dispo + ", mecanique=" + mecanique + "]";
+				+ joueur_min + ", joueur_max=" + joueur_max + ", exemplaire_catalogue="
+				+ exemplaire_catalogue + ", exemplaire_dispo=" + exemplaire_dispo  + "]";
 	}
 	
 }

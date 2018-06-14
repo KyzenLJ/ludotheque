@@ -24,59 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 import co.simplon.ludotheque.exception.ResourceNotFoundException;
 import co.simplon.ludotheque.model.Compte;
 import co.simplon.ludotheque.repository.CompteRepository;
+import co.simplon.ludotheque.service.CompteService;
 
 @Controller
 public class CompteController {
 	
 	@Autowired
-	private CompteRepository compteRepository;
+	private CompteService compteService;
 	
 	//afficher les comptes utilisateur
 	@GetMapping("/gestionCompte")
-	public String getProfilPage (Model model) {
-		model.addAttribute("profilesFirstPage", compteRepository.findAll(PageRequest.of(0,10)));
+	public String getPageComptes (Model model) {
+		model.addAttribute("compteesFirstPage", compteService.findAll(PageRequest.of(0,20)));
 		return "gestionCompte";
 	}
-//	// formulaire de création de compte
-//	@RequestMapping(value={ "/gestionCompte" }, method = RequestMethod.GET)
-//    public String showCreaCompteForm(Model model) {
-// 
-//        Compte compte = new Compte();
-//        model.addAttribute("compte", compte);
-// 
-//        return "gestionCompte";
-//   }
-//    // injection des infos du compte en BDD à la création
-//    public String saveCompte(
-//            final Compte compte, final BindingResult bindingResult, final ModelMap model) {
-//        if (bindingResult.hasErrors()) {
-//            return "gestionCompte";
-//        }
-//        this.compteRepository.save(compte);
-//        model.clear();
-//        return "/gestionCompte";
-//    }  
 
-	@PutMapping("/profil/{compteId}")
-	public Compte updateCompte(@PathVariable Long compteId,
-								@Valid @RequestBody Compte compteRequest) {
-		return compteRepository.findById(compteId)
-				.map(compte -> {
-					compte.setNom(compteRequest.getNom());
-					compte.setPrenom(compteRequest.getPrenom());
-					compte.setEmail(compteRequest.getEmail());
-					compte.setMdp(compteRequest.getMdp());
-					compte.setPseudo(compteRequest.getPseudo());
-					return compteRepository.save(compte);
-				}).orElseThrow(() -> new ResourceNotFoundException("Compte inconnu pour l'id " + compteId));
-	}
 	
-	@DeleteMapping("/gestionComptes/{compteId}")
-	public ResponseEntity<?> deleteCompte(@PathVariable Long compteId) {
-		return compteRepository.findById(compteId)
-				.map(compte -> {
-					compteRepository.delete(compte);
-					return ResponseEntity.ok().build();
-				}).orElseThrow(() -> new ResourceNotFoundException("Compte inconnu pour l'id " + compteId));
-	}
+//	@DeleteMapping("/gestionComptes/{compteId}")
+//	public String deleteCompte
+//	}
 }
