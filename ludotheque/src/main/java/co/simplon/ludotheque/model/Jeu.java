@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -12,6 +13,11 @@ import javax.validation.constraints.Size;
 @Table(name="jeu")
 public class Jeu extends AuditModel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -31,6 +37,7 @@ public class Jeu extends AuditModel {
 	private Integer exemplaireCatalogue;
 	@Column( name="exemplaire_dispo")
 	private Integer exemplaireDispo;
+	
 	
 //    @ManyToMany(cascade = { 
 //            CascadeType.PERSIST, 
@@ -59,6 +66,7 @@ public class Jeu extends AuditModel {
 		this.exemplaireDispo = exemplaireDispo;
 //		this.mecanique = mecanique;
 	}
+	
 	
 	public Long getId() {
 		return id;

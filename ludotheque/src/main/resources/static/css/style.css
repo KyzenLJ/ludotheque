@@ -3,6 +3,15 @@ background: #eee;
 padding: 5px;
 }
 
+body>h1 {
+	text-align: center;
+}
+
+body>header>form {
+	vertical-align: middle;
+	margin-right: 0;
+}
+
 body>header>a>img, body>header a {
 display: inline-block;
 vertical-align: middle;
@@ -28,4 +37,36 @@ margin-top: 18px;
 #logged-in-info form {
 display: inline-block;
 margin-right: 10px;
+}
+
+.ludolife {
+	margin:10px;
+	text-align: center;
+
+}
+
+.btn {
+	margin: 2px;
+}
+
+.table-bordered {
+	border-radius: 5px;
+	width: 80%;
+	margin: 0px auto;
+	float: none;
+	text-align: center;
+	
+}
+
+.articles {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50vw;
+}
+
+.content {
+	margin-top: 0;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    text-align: center;
 }

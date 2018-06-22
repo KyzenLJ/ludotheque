@@ -1,0 +1,41 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout :: ludo-head" />
+<meta charset="utf-8">
+<title>Création article</title>
+
+<body>
+
+	<header th:include="layout::ludo-header" />
+
+	<h1>Poster un nouvel article</h1>
+	<p> Les champs suivis d'une * sont obligatoire. </p>
+
+	<form id="modifArticleForm" action="#" th:action="@{/creationArticle}"
+		th:object="${article}" method="post">
+		<table>
+			<tr>
+				<td><input id="idArticle" type="hidden" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td>Titre : *</td>
+				<td><input id="titreArticle" type="text" th:field="*{titre}" required/></td>
+			</tr>
+			<tr>
+				<td>Texte : *</td>
+				<td><textarea rows="10" cols="50" type="text" th:field="*{texte}" required/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="submit" value="Poster l'article" required/> <input type="reset"
+					value="Annuler la saisie" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<footer th:include="layout::ludo-footer" />
+
+</body>
+
+</html>

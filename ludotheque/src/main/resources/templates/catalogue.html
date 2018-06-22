@@ -9,10 +9,10 @@
 
 	<header th:include="layout::ludo-header" />
 
-	<h1>Liste de jeux</h1>
+	<h1 >Liste des jeux</h1>
 
 	<div>
-		<table class="table table-bordered">
+		<table class="table-bordered">
 		<thead>
 			<tr>
 				<th scope="col">Titre</th>
@@ -34,8 +34,8 @@
 				<td th:utext="${jeu.exemplaireCatalogue}">...</td>
 				<td th:utext="${jeu.exemplaireDispo}">...</td>
 				<td>
-				<a th:href="@{/gestionCatalogue/modif/__${jeu.id}__}">Modifier</a>
-				<a th:href="@{/supprimeJeu/__${jeu.id}__}">Supprimer</a>
+				<a th:href="@{/gestionCatalogue/modif/__${jeu.id}__}" class="btn btn-info" role="button">Modifier</a>
+				<a th:href="@{/supprimeJeu/__${jeu.id}__}" class="btn btn-info" role="button">Supprimer</a>
 				</td>
 			</tr>
 		</tbody>
